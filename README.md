@@ -59,7 +59,7 @@ Frontend (http://localhost:3000):
 npm --workspace=frontend run dev
 ```
 
-Backend (http://localhost:5000):
+Backend (http://localhost:8000):
 ```bash
 npm --workspace=backend run dev
 ```
