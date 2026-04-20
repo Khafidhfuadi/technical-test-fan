@@ -5,7 +5,12 @@ import { catchAsync } from '../utils/catchAsync';
 import { prisma } from '../utils/prisma';
 import { AppError } from '../utils/AppError';
 import { sendEmail } from '../utils/email';
-import { registerSchema, loginSchema } from '../validations/auth.validation';
+import { 
+  registerSchema, 
+  loginSchema, 
+  forgotPasswordSchema, 
+  resetPasswordSchema 
+} from '../validations/auth.validation';
 import jwt from 'jsonwebtoken';
 import { redis } from '../utils/redis';
 
@@ -117,4 +122,77 @@ export const logout = catchAsync(async (req: any, res: Response) => {
   await redis.del(`session:${userId}`);
 
   res.status(200).json({ message: 'Logged out' });
+});
+
+export const forgotPassword = catchAsync(async (req: Request, res: Response) => {
+  const { email } = forgotPasswordSchema.parse(req.body);
+
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (!user) {
+    throw new AppError('There is no user with that email address.', 404);
+  }
+
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  const passwordResetExpires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+
+  await prisma.user.update({
+    where: { id: user.id },
+    data: {
+      passwordResetToken: resetToken,
+      passwordResetExpires,
+    },
+  });
+
+  const resetUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/reset-password?token=${resetToken}`;
+  const message = `You requested a password reset. Please make a request to: \n\n ${resetUrl}`;
+
+  try {
+    await sendEmail({
+      to: user.email,
+      subject: 'Password Reset',
+      text: message,
+    });
+  } catch (error) {
+    await prisma.user.update({
+      where: { id: user.id },
+      data: {
+        passwordResetToken: null,
+        passwordResetExpires: null,
+      },
+    });
+    throw new AppError('There was an error sending the email. Try again later.', 500);
+  }
+
+  res.status(200).json({ message: 'Reset email sent' });
+});
+
+export const resetPassword = catchAsync(async (req: Request, res: Response) => {
+  const { token, newPassword } = resetPasswordSchema.parse(req.body);
+
+  const user = await prisma.user.findFirst({
+    where: {
+      passwordResetToken: token,
+      passwordResetExpires: { gt: new Date() },
+    },
+  });
+
+  if (!user) {
+    throw new AppError('Token is invalid or has expired', 400);
+  }
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+  await prisma.user.update({
+    where: { id: user.id },
+    data: {
+      password: hashedPassword,
+      passwordResetToken: null,
+      passwordResetExpires: null,
+    },
+  });
+
+  // Also clear their sessions so they have to login again
+  await redis.del(`session:${user.id}`);
+
+  res.status(200).json({ message: 'Password reset successful' });
 });
