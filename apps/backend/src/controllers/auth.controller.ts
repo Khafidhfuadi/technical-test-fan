@@ -93,7 +93,7 @@ export const login = catchAsync(async (req: Request, res: Response) => {
   const accessToken = jwt.sign(
     { id: user.id },
     process.env.JWT_SECRET || 'supersecret_jwt_key',
-    { expiresIn: process.env.JWT_EXPIRES_IN || '15m' }
+    { expiresIn: (process.env.JWT_EXPIRES_IN as any) || '15m' }
   );
 
   const refreshToken = crypto.randomBytes(40).toString('hex');
