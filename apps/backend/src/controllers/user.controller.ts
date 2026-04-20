@@ -67,6 +67,19 @@ export const getUsers = catchAsync(async (req: Request, res: Response) => {
   res.status(200).json(responseData);
 });
 
+export const getMe = catchAsync(async (req: any, res: Response) => {
+  const user = await prisma.user.findUnique({
+    where: { id: req.user.id },
+    select: { id: true, name: true, email: true, isEmailVerified: true },
+  });
+
+  if (!user) {
+    throw new AppError('User not found', 404);
+  }
+
+  res.status(200).json({ data: user });
+});
+
 export const updateProfile = catchAsync(async (req: any, res: Response) => {
   const { name } = updateProfileSchema.parse(req.body);
   const userId = req.user.id;
