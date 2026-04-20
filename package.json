@@ -1,0 +1,8 @@
+{
+  "name": "technical-test-fan",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
