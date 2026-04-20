@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
+import bookRoutes from './routes/book.routes';
 import { errorHandler } from './middlewares/error.middleware';
 
 dotenv.config();
@@ -22,6 +23,7 @@ app.get('/health', (req, res) => {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/books', bookRoutes);
 
 // Error Handling Middleware
 app.use(errorHandler);
