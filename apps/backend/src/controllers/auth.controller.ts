@@ -5,11 +5,11 @@ import { catchAsync } from '../utils/catchAsync';
 import { prisma } from '../utils/prisma';
 import { AppError } from '../utils/AppError';
 import { sendEmail } from '../utils/email';
-import { 
-  registerSchema, 
-  loginSchema, 
-  forgotPasswordSchema, 
-  resetPasswordSchema 
+import {
+  registerSchema,
+  loginSchema,
+  forgotPasswordSchema,
+  resetPasswordSchema
 } from '../validations/auth.validation';
 import jwt from 'jsonwebtoken';
 import { redis } from '../utils/redis';
@@ -34,7 +34,7 @@ export const register = catchAsync(async (req: Request, res: Response) => {
     },
   });
 
-  const verifyUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/verify-email?token=${emailVerificationToken}`;
+  const verifyUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/auth/verify-email?token=${emailVerificationToken}`;
   const message = `Please verify your email by clicking the following link: \n\n ${verifyUrl}`;
 
   try {
@@ -45,6 +45,7 @@ export const register = catchAsync(async (req: Request, res: Response) => {
     });
   } catch (error) {
     await prisma.user.delete({ where: { id: user.id } });
+    console.log(error);
     throw new AppError('There was an error sending the email. Try again later.', 500);
   }
 
@@ -81,7 +82,7 @@ export const login = catchAsync(async (req: Request, res: Response) => {
   const { email, password } = loginSchema.parse(req.body);
 
   const user = await prisma.user.findUnique({ where: { email } });
-  
+
   if (!user || !(await bcrypt.compare(password, user.password))) {
     throw new AppError('Incorrect email or password', 401);
   }
@@ -97,7 +98,7 @@ export const login = catchAsync(async (req: Request, res: Response) => {
   );
 
   const refreshToken = crypto.randomBytes(40).toString('hex');
-  
+
   // Save refresh token to Redis (7 days expiration)
   const sessionKey = `session:${user.id}`;
   await redis.set(sessionKey, refreshToken, 'EX', 60 * 60 * 24 * 7);
@@ -143,7 +144,7 @@ export const forgotPassword = catchAsync(async (req: Request, res: Response) => 
     },
   });
 
-  const resetUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/auth/reset-password?token=${resetToken}`;
+  const resetUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/auth/reset-password?token=${resetToken}`;
   const message = `You requested a password reset. Please make a request to: \n\n ${resetUrl}`;
 
   try {
