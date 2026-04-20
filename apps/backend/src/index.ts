@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
+import { swaggerDocument } from './docs/swagger';
 import authRoutes from './routes/auth.routes';
 import userRoutes from './routes/user.routes';
 import bookRoutes from './routes/book.routes';
@@ -20,6 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK', message: 'API is running' });
 });
+
+// Swagger Documentation API
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Static file serving for uploads
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
