@@ -5,7 +5,9 @@ import { catchAsync } from '../utils/catchAsync';
 import { prisma } from '../utils/prisma';
 import { AppError } from '../utils/AppError';
 import { sendEmail } from '../utils/email';
-import { registerSchema } from '../validations/auth.validation';
+import { registerSchema, loginSchema } from '../validations/auth.validation';
+import jwt from 'jsonwebtoken';
+import { redis } from '../utils/redis';
 
 export const register = catchAsync(async (req: Request, res: Response) => {
   const { name, email, password } = registerSchema.parse(req.body);
@@ -68,4 +70,51 @@ export const verifyEmail = catchAsync(async (req: Request, res: Response) => {
   });
 
   res.status(200).json({ message: 'Email verified' });
+});
+
+export const login = catchAsync(async (req: Request, res: Response) => {
+  const { email, password } = loginSchema.parse(req.body);
+
+  const user = await prisma.user.findUnique({ where: { email } });
+  
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    throw new AppError('Incorrect email or password', 401);
+  }
+
+  if (!user.isEmailVerified) {
+    throw new AppError('Please verify your email to login', 403);
+  }
+
+  const accessToken = jwt.sign(
+    { id: user.id },
+    process.env.JWT_SECRET || 'supersecret_jwt_key',
+    { expiresIn: process.env.JWT_EXPIRES_IN || '15m' }
+  );
+
+  const refreshToken = crypto.randomBytes(40).toString('hex');
+  
+  // Save refresh token to Redis (7 days expiration)
+  const sessionKey = `session:${user.id}`;
+  await redis.set(sessionKey, refreshToken, 'EX', 60 * 60 * 24 * 7);
+
+  res.status(200).json({
+    accessToken,
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      isEmailVerified: user.isEmailVerified,
+    },
+  });
+});
+
+export const logout = catchAsync(async (req: any, res: Response) => {
+  const userId = req.user?.id;
+  if (!userId) {
+    throw new AppError('You are not logged in.', 401);
+  }
+
+  await redis.del(`session:${userId}`);
+
+  res.status(200).json({ message: 'Logged out' });
 });
