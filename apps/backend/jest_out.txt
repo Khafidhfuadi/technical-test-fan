@@ -1,0 +1,591 @@
+
+> backend@1.0.0 test
+> jest src/tests/integration/book.integration.test.ts
+
+  console.log
+    [[ERROR_DUMP]] NAME: Error | MSG: You are not logged in! Please log in to get access. | INSTANCEOF APP: true
+
+      at log (middlewares/error.middleware.ts:15:13)
+
+  console.error
+    AppError: You are not logged in! Please log in to get access.
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:20:11
+        at Generator.next (<anonymous>)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:1361:39
+        at new Promise (<anonymous>)
+        at __awaiter (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:1310:10)
+        at __awaiter (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:12:102)
+        at fn (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/utils/catchAsync.ts:5:5)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/route.js:149:13)
+        at Route.dispatch (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/route.js:119:3)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:284:15
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at router.handle (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:175:3)
+        at router (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:47:12)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at urlencodedParser (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/body-parser/lib/types/urlencoded.js:100:7)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at jsonParser (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/body-parser/lib/types/json.js:122:7)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at cors (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:188:7)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:224:17
+        at originCallback (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:214:15)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:219:13
+        at optionsCallback (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:199:9)
+        at corsMiddleware (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:204:7)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at expressInit (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/middleware/init.js:40:5)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at query (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/middleware/query.js:45:5)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at router.handle (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:175:3)
+        at app.handle (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/application.js:181:10)
+        at Server.app (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/express.js:39:9)
+        at Server.emit (node:events:508:28)
+        at parserOnIncoming (node:_http_server:1212:12)
+        at HTTPParser.parserOnHeadersComplete (node:_http_common:123:17) {
+      statusCode: 401,
+      isOperational: true
+    }
+
+      40 |   // Log error for debugging in development
+      41 |   if (process.env.NODE_ENV !== 'production') {
+    > 42 |     console.error(err);
+         |             ^
+      43 |   }
+      44 |
+      45 |   res.status(statusCode).json({
+
+      at error (middlewares/error.middleware.ts:42:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (../../../node_modules/express/lib/router/index.js:326:13)
+      at ../../../node_modules/express/lib/router/index.js:286:9
+      at router.process_params (../../../node_modules/express/lib/router/index.js:346:12)
+      at next (../../../node_modules/express/lib/router/index.js:280:10)
+      at ../../../node_modules/express/lib/router/index.js:646:15
+      at next (../../../node_modules/express/lib/router/index.js:265:14)
+      at next (../../../node_modules/express/lib/router/route.js:141:14)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:67:12)
+      at next (../../../node_modules/express/lib/router/route.js:147:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:67:12)
+      at next (../../../node_modules/express/lib/router/route.js:147:13)
+
+  console.log
+    [[ERROR_DUMP]] NAME: JsonWebTokenError | MSG: invalid token | INSTANCEOF APP: false
+
+      at log (middlewares/error.middleware.ts:15:13)
+
+  console.error
+    JsonWebTokenError {
+      name: 'JsonWebTokenError',
+      message: 'invalid token'
+    }
+
+      40 |   // Log error for debugging in development
+      41 |   if (process.env.NODE_ENV !== 'production') {
+    > 42 |     console.error(err);
+         |             ^
+      43 |   }
+      44 |
+      45 |   res.status(statusCode).json({
+
+      at error (middlewares/error.middleware.ts:42:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (../../../node_modules/express/lib/router/index.js:326:13)
+      at ../../../node_modules/express/lib/router/index.js:286:9
+      at router.process_params (../../../node_modules/express/lib/router/index.js:346:12)
+      at next (../../../node_modules/express/lib/router/index.js:280:10)
+      at ../../../node_modules/express/lib/router/index.js:646:15
+      at next (../../../node_modules/express/lib/router/index.js:265:14)
+      at next (../../../node_modules/express/lib/router/route.js:141:14)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:67:12)
+      at next (../../../node_modules/express/lib/router/route.js:147:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:67:12)
+      at next (../../../node_modules/express/lib/router/route.js:147:13)
+
+  console.log
+    [[ERROR_DUMP]] NAME: ZodError | MSG: [
+      {
+        "code": "too_small",
+        "minimum": 2,
+        "type": "string",
+        "inclusive": true,
+        "exact": false,
+        "message": "Title must be at least 2 characters",
+        "path": [
+          "title"
+        ]
+      }
+    ] | INSTANCEOF APP: false
+
+      at log (middlewares/error.middleware.ts:15:13)
+
+  console.log
+    [[ERROR_DUMP]] NAME: ZodError | MSG: [
+      {
+        "code": "too_small",
+        "minimum": 1,
+        "type": "number",
+        "inclusive": true,
+        "exact": false,
+        "message": "Number must be greater than or equal to 1",
+        "path": [
+          "rating"
+        ]
+      }
+    ] | INSTANCEOF APP: false
+
+      at log (middlewares/error.middleware.ts:15:13)
+
+  console.log
+    [[ERROR_DUMP]] NAME: Error | MSG: You are not authorized to update this book | INSTANCEOF APP: true
+
+      at log (middlewares/error.middleware.ts:15:13)
+
+  console.error
+    AppError: You are not authorized to update this book
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/controllers/book.controller.ts:179:11
+        at Generator.next (<anonymous>)
+        at fulfilled (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/controllers/book.controller.ts:3382:24)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5) {
+      statusCode: 403,
+      isOperational: true
+    }
+
+      40 |   // Log error for debugging in development
+      41 |   if (process.env.NODE_ENV !== 'production') {
+    > 42 |     console.error(err);
+         |             ^
+      43 |   }
+      44 |
+      45 |   res.status(statusCode).json({
+
+      at error (middlewares/error.middleware.ts:42:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (../../../node_modules/express/lib/router/index.js:326:13)
+      at ../../../node_modules/express/lib/router/index.js:286:9
+      at router.process_params (../../../node_modules/express/lib/router/index.js:346:12)
+      at next (../../../node_modules/express/lib/router/index.js:280:10)
+      at ../../../node_modules/express/lib/router/index.js:646:15
+      at next (../../../node_modules/express/lib/router/index.js:265:14)
+      at next (../../../node_modules/express/lib/router/route.js:141:14)
+
+  console.log
+    [[ERROR_DUMP]] NAME: Error | MSG: Book not found | INSTANCEOF APP: true
+
+      at log (middlewares/error.middleware.ts:15:13)
+
+  console.error
+    AppError: Book not found
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/controllers/book.controller.ts:172:11
+        at Generator.next (<anonymous>)
+        at fulfilled (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/controllers/book.controller.ts:3382:24)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5) {
+      statusCode: 404,
+      isOperational: true
+    }
+
+      40 |   // Log error for debugging in development
+      41 |   if (process.env.NODE_ENV !== 'production') {
+    > 42 |     console.error(err);
+         |             ^
+      43 |   }
+      44 |
+      45 |   res.status(statusCode).json({
+
+      at error (middlewares/error.middleware.ts:42:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (../../../node_modules/express/lib/router/index.js:326:13)
+      at ../../../node_modules/express/lib/router/index.js:286:9
+      at router.process_params (../../../node_modules/express/lib/router/index.js:346:12)
+      at next (../../../node_modules/express/lib/router/index.js:280:10)
+      at ../../../node_modules/express/lib/router/index.js:646:15
+      at next (../../../node_modules/express/lib/router/index.js:265:14)
+      at next (../../../node_modules/express/lib/router/route.js:141:14)
+
+  console.log
+    [[ERROR_DUMP]] NAME: Error | MSG: You are not logged in! Please log in to get access. | INSTANCEOF APP: true
+
+      at log (middlewares/error.middleware.ts:15:13)
+
+  console.error
+    AppError: You are not logged in! Please log in to get access.
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:20:11
+        at Generator.next (<anonymous>)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:1361:39
+        at new Promise (<anonymous>)
+        at __awaiter (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:1310:10)
+        at __awaiter (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:12:102)
+        at fn (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/utils/catchAsync.ts:5:5)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/route.js:149:13)
+        at Route.dispatch (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/route.js:119:3)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:284:15
+        at param (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:365:14)
+        at param (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:376:14)
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:421:3)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at router.handle (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:175:3)
+        at router (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:47:12)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at urlencodedParser (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/body-parser/lib/types/urlencoded.js:100:7)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at jsonParser (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/body-parser/lib/types/json.js:122:7)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at cors (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:188:7)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:224:17
+        at originCallback (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:214:15)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:219:13
+        at optionsCallback (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:199:9)
+        at corsMiddleware (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:204:7)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at expressInit (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/middleware/init.js:40:5)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at query (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/middleware/query.js:45:5)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at router.handle (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:175:3)
+        at app.handle (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/application.js:181:10)
+        at Server.app (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/express.js:39:9)
+        at Server.emit (node:events:508:28)
+        at parserOnIncoming (node:_http_server:1212:12)
+        at HTTPParser.parserOnHeadersComplete (node:_http_common:123:17) {
+      statusCode: 401,
+      isOperational: true
+    }
+
+      40 |   // Log error for debugging in development
+      41 |   if (process.env.NODE_ENV !== 'production') {
+    > 42 |     console.error(err);
+         |             ^
+      43 |   }
+      44 |
+      45 |   res.status(statusCode).json({
+
+      at error (middlewares/error.middleware.ts:42:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (../../../node_modules/express/lib/router/index.js:326:13)
+      at ../../../node_modules/express/lib/router/index.js:286:9
+      at router.process_params (../../../node_modules/express/lib/router/index.js:346:12)
+      at next (../../../node_modules/express/lib/router/index.js:280:10)
+      at ../../../node_modules/express/lib/router/index.js:646:15
+      at next (../../../node_modules/express/lib/router/index.js:265:14)
+      at next (../../../node_modules/express/lib/router/route.js:141:14)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:67:12)
+      at next (../../../node_modules/express/lib/router/route.js:147:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:67:12)
+      at next (../../../node_modules/express/lib/router/route.js:147:13)
+
+  console.log
+    [[ERROR_DUMP]] NAME: Error | MSG: You are not authorized to delete this book | INSTANCEOF APP: true
+
+      at log (middlewares/error.middleware.ts:15:13)
+
+  console.error
+    AppError: You are not authorized to delete this book
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/controllers/book.controller.ts:222:11
+        at Generator.next (<anonymous>)
+        at fulfilled (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/controllers/book.controller.ts:3382:24)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5) {
+      statusCode: 403,
+      isOperational: true
+    }
+
+      40 |   // Log error for debugging in development
+      41 |   if (process.env.NODE_ENV !== 'production') {
+    > 42 |     console.error(err);
+         |             ^
+      43 |   }
+      44 |
+      45 |   res.status(statusCode).json({
+
+      at error (middlewares/error.middleware.ts:42:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (../../../node_modules/express/lib/router/index.js:326:13)
+      at ../../../node_modules/express/lib/router/index.js:286:9
+      at router.process_params (../../../node_modules/express/lib/router/index.js:346:12)
+      at Immediate.next (../../../node_modules/express/lib/router/index.js:280:10)
+      at Immediate._onImmediate (../../../node_modules/express/lib/router/index.js:646:15)
+
+  console.log
+    [[ERROR_DUMP]] NAME: Error | MSG: Book not found | INSTANCEOF APP: true
+
+      at log (middlewares/error.middleware.ts:15:13)
+
+  console.error
+    AppError: Book not found
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/controllers/book.controller.ts:218:11
+        at Generator.next (<anonymous>)
+        at fulfilled (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/controllers/book.controller.ts:3382:24)
+        at processTicksAndRejections (node:internal/process/task_queues:103:5) {
+      statusCode: 404,
+      isOperational: true
+    }
+
+      40 |   // Log error for debugging in development
+      41 |   if (process.env.NODE_ENV !== 'production') {
+    > 42 |     console.error(err);
+         |             ^
+      43 |   }
+      44 |
+      45 |   res.status(statusCode).json({
+
+      at error (middlewares/error.middleware.ts:42:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (../../../node_modules/express/lib/router/index.js:326:13)
+      at ../../../node_modules/express/lib/router/index.js:286:9
+      at router.process_params (../../../node_modules/express/lib/router/index.js:346:12)
+      at Immediate.next (../../../node_modules/express/lib/router/index.js:280:10)
+      at Immediate._onImmediate (../../../node_modules/express/lib/router/index.js:646:15)
+
+  console.log
+    [[ERROR_DUMP]] NAME: Error | MSG: You are not logged in! Please log in to get access. | INSTANCEOF APP: true
+
+      at log (middlewares/error.middleware.ts:15:13)
+
+  console.error
+    AppError: You are not logged in! Please log in to get access.
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:20:11
+        at Generator.next (<anonymous>)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:1361:39
+        at new Promise (<anonymous>)
+        at __awaiter (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:1310:10)
+        at __awaiter (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/middlewares/auth.middleware.ts:12:102)
+        at fn (/Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend/src/utils/catchAsync.ts:5:5)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/route.js:149:13)
+        at Route.dispatch (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/route.js:119:3)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:284:15
+        at param (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:365:14)
+        at param (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:376:14)
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:421:3)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at router.handle (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:175:3)
+        at router (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:47:12)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at urlencodedParser (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/body-parser/lib/types/urlencoded.js:91:7)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at jsonParser (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/body-parser/lib/types/json.js:113:7)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at cors (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:188:7)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:224:17
+        at originCallback (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:214:15)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:219:13
+        at optionsCallback (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:199:9)
+        at corsMiddleware (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/cors/lib/index.js:204:7)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at expressInit (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/middleware/init.js:40:5)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at query (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/middleware/query.js:45:5)
+        at Layer.handle [as handle_request] (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/layer.js:95:5)
+        at trim_prefix (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:328:13)
+        at /Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:286:9
+        at router.process_params (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:346:12)
+        at next (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:280:10)
+        at router.handle (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/router/index.js:175:3)
+        at app.handle (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/application.js:181:10)
+        at Server.app (/Users/khafidhfuadi/Documents/web/technical-test-fan/node_modules/express/lib/express.js:39:9)
+        at Server.emit (node:events:508:28)
+        at parserOnIncoming (node:_http_server:1212:12)
+        at HTTPParser.parserOnHeadersComplete (node:_http_common:123:17) {
+      statusCode: 401,
+      isOperational: true
+    }
+
+      40 |   // Log error for debugging in development
+      41 |   if (process.env.NODE_ENV !== 'production') {
+    > 42 |     console.error(err);
+         |             ^
+      43 |   }
+      44 |
+      45 |   res.status(statusCode).json({
+
+      at error (middlewares/error.middleware.ts:42:13)
+      at Layer.handle_error (../../../node_modules/express/lib/router/layer.js:71:5)
+      at trim_prefix (../../../node_modules/express/lib/router/index.js:326:13)
+      at ../../../node_modules/express/lib/router/index.js:286:9
+      at router.process_params (../../../node_modules/express/lib/router/index.js:346:12)
+      at Immediate.next (../../../node_modules/express/lib/router/index.js:280:10)
+      at Immediate._onImmediate (../../../node_modules/express/lib/router/index.js:646:15)
+
+(node:92053) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+FAIL src/tests/integration/book.integration.test.ts
+  GET /api/books (public)
+    ✓ 200 — should return paginated book list without auth (13 ms)
+    ✓ 200 — should filter by author query param (2 ms)
+    ✓ 200 — should filter by rating query param (1 ms)
+    ✓ 200 — should sort by rating when sortBy=rating&order=asc (1 ms)
+    ✓ 200 — should return empty data array when no books (1 ms)
+  POST /api/books (authenticated)
+    ✓ 201 — should create book with valid data and token (5 ms)
+    ✓ 401 — should return unauthorized without token (21 ms)
+    ✓ 401 — should return unauthorized with invalid token (3 ms)
+    ✕ 400 — should return validation error if title is missing (empty string) (9 ms)
+    ✕ 400 — should return validation error if rating is out of range (0) (2 ms)
+  PUT /api/books/:id (authenticated)
+    ✓ 200 — should update book if user is the owner (2 ms)
+    ✓ 403 — should return forbidden if user is not the owner (2 ms)
+    ✓ 404 — should return not found if book does not exist (2 ms)
+    ✓ 401 — should return unauthorized without token (2 ms)
+  DELETE /api/books/:id (authenticated)
+    ✓ 200 — should delete book if user is the owner (1 ms)
+    ✓ 403 — should return forbidden if user is not the owner (1 ms)
+    ✓ 404 — should return not found for nonexistent book id (1 ms)
+    ✓ 401 — should return unauthorized without token (2 ms)
+
+  ● POST /api/books (authenticated) › 400 — should return validation error if title is missing (empty string)
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 500
+
+      221 |       .field('rating', '4');
+      222 |
+    > 223 |     expect(res.status).toBe(400);
+          |                        ^
+      224 |     expect(res.body.error).toBeDefined();
+      225 |   });
+      226 |
+
+      at tests/integration/book.integration.test.ts:223:24
+      at fulfilled (tests/integration/book.integration.test.ts:18:58)
+
+  ● POST /api/books (authenticated) › 400 — should return validation error if rating is out of range (0)
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 400
+    Received: 500
+
+      234 |       .field('rating', '0');
+      235 |
+    > 236 |     expect(res.status).toBe(400);
+          |                        ^
+      237 |     expect(res.body.error).toBeDefined();
+      238 |   });
+      239 | });
+
+      at tests/integration/book.integration.test.ts:236:24
+      at fulfilled (tests/integration/book.integration.test.ts:18:58)
+
+--------------------------|---------|----------|---------|---------|--------------------------------------------
+File                      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                          
+--------------------------|---------|----------|---------|---------|--------------------------------------------
+All files                 |   56.94 |    37.72 |    37.5 |   58.67 |                                            
+ src                      |   95.83 |      100 |       0 |   95.83 |                                            
+  app.ts                  |   95.83 |      100 |       0 |   95.83 | 21                                         
+ src/controllers          |   41.13 |       27 |      25 |   43.38 |                                            
+  auth.controller.ts      |   17.85 |        0 |       0 |   19.23 | 18-53,57-79,83-107,119-126,130-169,173-200 
+  book.controller.ts      |   64.84 |       50 |   66.66 |   68.69 | 20,80-101,105-136,170,177,185-189,226-228  
+  user.controller.ts      |   20.75 |        0 |       0 |   22.44 | 11-67,71-80,84-98,105-125                  
+ src/docs                 |     100 |      100 |     100 |     100 |                                            
+  swagger.ts              |     100 |      100 |     100 |     100 |                                            
+ src/middlewares          |   65.88 |    56.36 |   41.66 |   64.55 |                                            
+  auth.middleware.ts      |   83.33 |       75 |      50 |   81.81 | 27,32,40-45                                
+  error.middleware.ts     |   81.48 |    65.62 |     100 |      80 | 27-30,35-37                                
+  rateLimit.middleware.ts |   31.25 |        0 |   33.33 |   28.57 | 7-22                                       
+  upload.middleware.ts    |      50 |       25 |       0 |      50 | 9,14-19,24-29                              
+ src/routes               |     100 |      100 |     100 |     100 |                                            
+  auth.routes.ts          |     100 |      100 |     100 |     100 |                                            
+  book.routes.ts          |     100 |      100 |     100 |     100 |                                            
+  user.routes.ts          |     100 |      100 |     100 |     100 |                                            
+ src/utils                |     100 |      100 |     100 |     100 |                                            
+  AppError.ts             |     100 |      100 |     100 |     100 |                                            
+  catchAsync.ts           |     100 |      100 |     100 |     100 |                                            
+ src/validations          |   85.71 |    41.66 |    62.5 |   85.71 |                                            
+  auth.validation.ts      |     100 |      100 |     100 |     100 |                                            
+  book.validation.ts      |     100 |     62.5 |     100 |     100 | 8-23                                       
+  user.validation.ts      |   57.14 |        0 |       0 |   57.14 | 6-7,18                                     
+--------------------------|---------|----------|---------|---------|--------------------------------------------
+Jest: "global" coverage threshold for lines (70%) not met: 58.67%
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 16 passed, 18 total
+Snapshots:   0 total
+Time:        1.353 s
+Ran all test suites matching src/tests/integration/book.integration.test.ts.
+npm error Lifecycle script `test` failed with error:
+npm error code 1
+npm error path /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend
+npm error workspace backend@1.0.0
+npm error location /Users/khafidhfuadi/Documents/web/technical-test-fan/apps/backend
+npm error command failed
+npm error command sh -c jest src/tests/integration/book.integration.test.ts
+npm notice
+npm notice New minor version of npm available! 11.6.2 -> 11.12.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.12.1
+npm notice To update run: npm install -g npm@11.12.1
+npm notice

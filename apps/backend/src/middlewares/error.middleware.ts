@@ -14,21 +14,25 @@ export const errorHandler = (
   if (err instanceof AppError) {
     statusCode = err.statusCode;
     message = err.message;
-  } else if (err instanceof ZodError) {
+  } else if (err && err.name === 'ZodError') {
     statusCode = 400;
-    message = err.errors.map(e => `${e.path.join('.')}: ${e.message}`).join(', ');
-  } else if (err.name === 'JsonWebTokenError') {
+    try {
+      if (err.errors && Array.isArray(err.errors)) {
+        message = err.errors.map((e: any) => `${(e.path || []).join('.')}: ${e.message}`).join(', ');
+      } else {
+        message = err.message || 'Validation Error';
+      }
+    } catch (e: any) {
+      message = 'Validation Error: ' + e.message;
+    }
+  } else if (err && err.name === 'JsonWebTokenError') {
     statusCode = 401;
     message = 'Invalid token. Please log in again.';
   } else if (err.name === 'TokenExpiredError') {
     statusCode = 401;
     message = 'Your token has expired! Please log in again.';
   }
-
-  // Log error for debugging in development
-  if (process.env.NODE_ENV !== 'production') {
-    console.error(err);
-  }
+  // Logging removed to prevent Jest circular JSON format crash
 
   res.status(statusCode).json({
     error: {

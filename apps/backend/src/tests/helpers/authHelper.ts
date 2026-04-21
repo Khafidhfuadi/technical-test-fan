@@ -4,7 +4,8 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'test-secret-key';
+// Gunakan secret yang sama dengan auth.middleware.ts agar valid di integration test
+const JWT_SECRET = process.env.JWT_SECRET || 'supersecret_jwt_key';
 
 /**
  * Generate valid JWT access token for test requests.
