@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setIsLoading(false);
         return;
       }
-      
+
       const { data } = await api.get('/api/users/me');
       setUser(data.data as User);
     } catch (error) {
@@ -49,12 +49,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setIsLoading(true);
     try {
       const { data } = await api.post('/api/auth/login', { email, password });
-      
+
       localStorage.setItem('token', data.accessToken);
       // Sync cookie so the Next.js middleware gets access to the token
-      document.cookie = `token=${data.accessToken}; path=/; max-age=86400`; 
-      
+      document.cookie = `token=${data.accessToken}; path=/; max-age=86400`;
+
       setUser(data.user);
+      setIsLoading(false);
       router.push('/home');
     } catch (error) {
       setIsLoading(false);
