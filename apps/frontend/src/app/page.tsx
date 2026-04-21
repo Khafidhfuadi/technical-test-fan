@@ -4,8 +4,9 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import axios from 'axios';
-import { Star, ChevronLeft, ChevronRight, BookOpen, Search } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, BookOpen, Search, User } from 'lucide-react';
 import { Book, PaginatedResponse } from '@/types';
+import { useAuth } from '@/contexts/AuthContext';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 const LIMIT = 12;
@@ -75,6 +76,7 @@ function BookCard({ book }: { book: Book }) {
 export default function LandingPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { user, isLoading: authLoading } = useAuth();
 
   const [books, setBooks] = useState<Book[]>([]);
   const [meta, setMeta] = useState({ total: 0, page: 1, limit: LIMIT, totalPages: 1 });
@@ -161,18 +163,30 @@ export default function LandingPage() {
             <span>BookShelf</span>
           </Link>
           <div className="flex items-center gap-2">
-            <Link
-              href="/login"
-              className="text-sm text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded-lg transition hover:bg-gray-100"
-            >
-              Login
-            </Link>
-            <Link
-              href="/register"
-              className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg transition"
-            >
-              Register
-            </Link>
+            {!authLoading && user ? (
+              <Link
+                href="/home"
+                className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-50 transition"
+              >
+                <User size={15} />
+                <span>{user.name}</span>
+              </Link>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="text-sm text-gray-600 hover:text-gray-900 px-3 py-1.5 rounded-lg transition hover:bg-gray-100"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/register"
+                  className="text-sm bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg transition"
+                >
+                  Register
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </header>

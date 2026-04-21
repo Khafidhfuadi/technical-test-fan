@@ -101,6 +101,41 @@ export const getBookById = catchAsync(async (req: Request, res: Response) => {
   res.status(200).json({ data: book });
 });
 
+export const getMyBooks = catchAsync(async (req: any, res: Response) => {
+  const userId = req.user.id;
+  const query = getBooksQuerySchema.parse(req.query);
+  const { sortBy, order, page, limit } = query;
+
+  const queryHash = require('crypto').createHash('md5').update(userId + JSON.stringify(query)).digest('hex');
+  const cacheKey = `books:mine:${queryHash}`;
+
+  const cached = await redis.get(cacheKey);
+  if (cached) return res.status(200).json(JSON.parse(cached));
+
+  const where: any = { uploadedById: userId };
+  const orderBy: any = sortBy === 'rating' ? { rating: order } : { createdAt: order };
+  const skip = (page - 1) * limit;
+
+  const [books, total] = await Promise.all([
+    prisma.book.findMany({
+      where,
+      select: {
+        id: true, title: true, author: true, description: true,
+        thumbnailUrl: true, rating: true, createdAt: true,
+        uploadedBy: { select: { name: true } },
+      },
+      skip, take: limit, orderBy,
+    }),
+    prisma.book.count({ where }),
+  ]);
+
+  const totalPages = Math.ceil(total / limit);
+  const responseData = { data: books, meta: { total, page, limit, totalPages } };
+
+  await redis.set(cacheKey, JSON.stringify(responseData), 'EX', 60);
+  res.status(200).json(responseData);
+});
+
 export const createBook = catchAsync(async (req: any, res: Response) => {
   const data = createBookSchema.parse(req.body);
   const userId = req.user.id;
@@ -115,10 +150,10 @@ export const createBook = catchAsync(async (req: any, res: Response) => {
     },
   });
 
-  const keys = await redis.keys('books:public:*');
-  if (keys.length > 0) {
-    await redis.del(...keys);
-  }
+  const publicKeys = await redis.keys('books:public:*');
+  if (publicKeys.length > 0) await redis.del(...publicKeys);
+  const mineKeys = await redis.keys('books:mine:*');
+  if (mineKeys.length > 0) await redis.del(...mineKeys);
 
   res.status(201).json({ data: newBook });
 });
@@ -164,10 +199,10 @@ export const updateBook = catchAsync(async (req: any, res: Response) => {
     },
   });
 
-  const keys = await redis.keys('books:public:*');
-  if (keys.length > 0) {
-    await redis.del(...keys);
-  }
+  const publicKeys = await redis.keys('books:public:*');
+  if (publicKeys.length > 0) await redis.del(...publicKeys);
+  const mineKeys = await redis.keys('books:mine:*');
+  if (mineKeys.length > 0) await redis.del(...mineKeys);
   await redis.del(`books:detail:${id}`);
 
   res.status(200).json({ data: updatedBook });
@@ -196,10 +231,10 @@ export const deleteBook = catchAsync(async (req: any, res: Response) => {
 
   await prisma.book.delete({ where: { id } });
 
-  const keys = await redis.keys('books:public:*');
-  if (keys.length > 0) {
-    await redis.del(...keys);
-  }
+  const publicKeys = await redis.keys('books:public:*');
+  if (publicKeys.length > 0) await redis.del(...publicKeys);
+  const mineKeys = await redis.keys('books:mine:*');
+  if (mineKeys.length > 0) await redis.del(...mineKeys);
   await redis.del(`books:detail:${id}`);
 
   res.status(200).json({ message: 'Book deleted successfully' });

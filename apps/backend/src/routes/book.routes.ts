@@ -1,11 +1,12 @@
 import { Router } from 'express';
-import { getBooks, getBookById, createBook, updateBook, deleteBook } from '../controllers/book.controller';
+import { getBooks, getBookById, getMyBooks, createBook, updateBook, deleteBook } from '../controllers/book.controller';
 import { authenticate } from '../middlewares/auth.middleware';
 import { uploadThumbnail } from '../middlewares/upload.middleware';
 
 const router = Router();
 
 router.get('/', getBooks);
+router.get('/my-books', authenticate, getMyBooks);
 router.get('/:id', getBookById);
 
 router.post('/', authenticate, uploadThumbnail.single('thumbnail'), createBook);
