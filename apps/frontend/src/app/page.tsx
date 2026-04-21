@@ -44,11 +44,8 @@ function BookCard({ book }: { book: Book }) {
     : null;
 
   return (
-    <Link
-      href={`/books/${book.id}`}
-      className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
-    >
-      <div className="h-44 bg-gray-100 flex items-center justify-center overflow-hidden">
+    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-all duration-200 flex flex-col">
+      <div className="aspect-[2/3] bg-gray-100 flex items-center justify-center overflow-hidden">
         {thumbnailSrc ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -60,16 +57,19 @@ function BookCard({ book }: { book: Book }) {
           <BookOpen size={40} className="text-gray-300" />
         )}
       </div>
-      <div className="p-4 flex flex-col gap-1.5 flex-1">
+      <div className="p-3 flex flex-col gap-1 flex-1">
         <h3 className="font-semibold text-gray-900 text-sm line-clamp-2 leading-snug">{book.title}</h3>
         <p className="text-xs text-gray-500">{book.author}</p>
+        {book.description && (
+          <p className="text-xs text-gray-400 line-clamp-1">{book.description}</p>
+        )}
         <StarRating rating={book.rating} />
         <div className="mt-auto pt-2 border-t border-gray-100 flex items-center justify-between text-xs text-gray-400">
           <span>by {book.uploadedBy?.name}</span>
           <span>{new Date(book.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 

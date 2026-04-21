@@ -21,10 +21,13 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
       {/* Sidebar */}
       <aside className="w-56 bg-white border-r border-gray-200 flex flex-col fixed top-0 left-0 h-full z-20">
         {/* Logo */}
-        <div className="h-14 flex items-center gap-2 px-4 border-b border-gray-200">
-          <BookOpen size={18} className="text-blue-600" />
-          <span className="font-bold text-gray-900 text-sm">BookShelf</span>
-        </div>
+        <Link href="/">
+          <div className="h-14 flex items-center gap-2 px-4 border-b border-gray-200">
+            <BookOpen size={18} className="text-blue-600" />
+
+            <span className="font-bold text-gray-900 text-sm">BookShelf</span>
+          </div>
+        </Link>
 
         {/* Nav */}
         <nav className="flex-1 p-3 space-y-0.5">
@@ -34,11 +37,10 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
               <Link
                 key={href}
                 href={href}
-                className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${
-                  isActive
-                    ? 'bg-blue-50 text-blue-700 font-medium'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
-                }`}
+                className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${isActive
+                  ? 'bg-blue-50 text-blue-700 font-medium'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                  }`}
               >
                 <Icon size={16} />
                 {label}
@@ -61,12 +63,12 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
             Logout
           </button>
         </div>
-      </aside>
+      </aside >
 
       {/* Main content */}
-      <main className="flex-1 ml-56 min-h-screen">
+      < main className="flex-1 ml-56 min-h-screen" >
         {children}
-      </main>
-    </div>
+      </main >
+    </div >
   );
 }
