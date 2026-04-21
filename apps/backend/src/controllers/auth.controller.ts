@@ -34,7 +34,8 @@ export const register = catchAsync(async (req: Request, res: Response) => {
     },
   });
 
-  const verifyUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/auth/verify-email?token=${emailVerificationToken}`;
+  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+  const verifyUrl = `${frontendUrl}/verify-email?token=${emailVerificationToken}`;
   const message = `Please verify your email by clicking the following link: \n\n ${verifyUrl}`;
 
   try {
@@ -144,8 +145,9 @@ export const forgotPassword = catchAsync(async (req: Request, res: Response) => 
     },
   });
 
-  const resetUrl = `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/auth/reset-password?token=${resetToken}`;
-  const message = `You requested a password reset. Please make a request to: \n\n ${resetUrl}`;
+  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+  const resetUrl = `${frontendUrl}/reset-password?token=${resetToken}`;
+  const message = `You requested a password reset. Click the link below to reset your password: \n\n ${resetUrl}`;
 
   try {
     await sendEmail({

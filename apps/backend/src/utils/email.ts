@@ -1,13 +1,17 @@
-import { MailtrapClient } from 'mailtrap';
+import nodemailer from 'nodemailer';
 
-const TOKEN = process.env.MAILTRAP_TOKEN || '';
-
-const client = new MailtrapClient({ token: TOKEN });
-
-const sender = {
-  email: 'hello@demomailtrap.co',
-  name: 'Technical Test App',
-};
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
 
 export const sendEmail = async (options: {
   to: string;
@@ -15,12 +19,11 @@ export const sendEmail = async (options: {
   text: string;
   html?: string;
 }) => {
-  await client.send({
-    from: sender,
-    to: [{ email: options.to }],
+  await transporter.sendMail({
+    from: `"Technical Test App" <${process.env.EMAIL_USER}>`,
+    to: options.to,
     subject: options.subject,
     text: options.text,
     ...(options.html ? { html: options.html } : {}),
-    category: 'System',
   });
 };
