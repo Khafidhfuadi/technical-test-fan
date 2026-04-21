@@ -46,7 +46,6 @@ export const register = catchAsync(async (req: Request, res: Response) => {
     });
   } catch (error) {
     await prisma.user.delete({ where: { id: user.id } });
-    console.log(error);
     throw new AppError('There was an error sending the email. Try again later.', 500);
   }
 
