@@ -21,5 +21,35 @@ services:
       - "6379:6379"
     restart: unless-stopped
 
+  backend:
+    build:
+      context: .
+      dockerfile: apps/backend/Dockerfile
+    container_name: backend_api
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://myuser:mypassword@postgres:5432/mydb
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: your_jwt_secret
+      NODE_ENV: production
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/frontend/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    container_name: frontend_app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
 volumes:
   postgres_data:
